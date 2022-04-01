@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>test viewport</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            h3 {
+                margin-bottom: 12px;
+            }
+
+            label {
+                display: block;
+            }
+
+            label input {
+                display: none;
+            }
+
+            label input:checked ~ span {
+                background-color: cadetblue;
+            }
+
+            label span {
+                display: block;
+                padding: 6px;
+                background-color: powderblue;
+            }
+
+            .test {
+                border: 6px solid gray;
+            }
+
+            .dvh {
+                height: 100dvh;
+            }
+
+            .lvh {
+                height: 100lvh;
+            }
+
+            .svh {
+                height: 100svh;
+            }
+
+            .vh {
+                height: 100vh;
+            }
+
+            .normal100 {
+                height: 100%;
+            }
+        </style>
+    </head>
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <body>
+        <div id="app">
+            <div class="test" :class="[height]">
+                <h3>test dvh, lvh, svh</h3>
+                <p>current {{ height }}</p>
+                <label for="dvh">
+                    <input type="radio" name="vh" id="dvh" v-model="height" value="dvh" />
+                    <span>100dvh</span>
+                </label>
+                <label for="lvh">
+                    <input type="radio" name="vh" id="lvh" v-model="height" value="lvh" />
+                    <span>100lvh</span>
+                </label>
+                <label for="svh">
+                    <input type="radio" name="vh" id="svh" v-model="height" value="svh" />
+                    <span>100svh</span>
+                </label>
+                <label for="normal100">
+                    <input
+                        type="radio"
+                        name="vh"
+                        id="normal100"
+                        v-model="height"
+                        value="normal100"
+                    />
+                    <span>100%</span>
+                </label>
+                <label for="vh">
+                    <input type="radio" name="vh" id="vh" v-model="height" value="vh" />
+                    <span>100vh</span>
+                </label>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    height: 'dvh',
+                }
+            },
+        }).mount('#app')
+    </script>
+</html>
